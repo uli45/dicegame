@@ -8,6 +8,14 @@
                 </view>
             </view>
         </button>
+        <button>
+            <view class="history" bindtap="showExplainModal">
+                <image class="topBarImg" src="../../static/images/explain.svg" mode="" />
+                <view>
+                    玩法说明
+                </view>
+            </view>
+        </button>
         <button open-type="share">
             <view class="history" bindtap="bidtapShare">
                 <image class="topBarImg" src="../../static/images/share.svg" mode="" />
@@ -134,6 +142,109 @@
             </view>
         </view>
     </view>
+    <!-- 打开玩法说明 -->
+    <view class="modals modals-bottom-dialog" hidden="{{hideExplainModal}}">
+        <view class="modals-cancel" bindtap="hideExplainModal"></view>
+        <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+            <image src="../../static/images/close.svg" bindtap="hideExplainModal" class="btn-cancel" mode="" />
+            <view class="title">摇骰子经典玩法介绍</view>
+            <scroll-view scroll-y="true" style="height: 80vh;">
+                <view class="game1">
+                    <view class='h2'>
+                        玩法一:吹牛
+                    </view>
+                    <view class="h3">
+                        基本规则：
+                    </view>
+                    <view class="h4">
+                        一、每个参与游戏的人，都均匀摇晃自己的散盅，然后悄悄打开，不要给别人看到。
+                    </view>
+                    <view class="p">
+                        (注:这里假设酒桌上有4个人，分为，甲、乙、丙、丁4个玩家，由甲玩家开始发言，根据自己摇出的骰子面，说出自己猜测在场所有人大概摇出几个同样的面。)
+                    </view>
+                    <view class="h4">
+                        二、甲玩家开始，假如骰子面分别是2个(D、个2、2个3;这个时候甲玩家可以根据自身骰子面说在场有6个3)。</view>
+                    <view class="p">
+                        (注:甲玩家作为第一个发言的人，他喊出骰子面的个数不能低于在场玩家人数，此时玩家人数为4人，最低喊4个几，也可以多加。)</view>
+                    <view class="h4">
+                        三、轮到乙玩家开始发言，他可以选择“跟或者“开”。
+                    </view>
+                    <view class="p">
+                        (注:1、如果选择“跟”:那么乙需要选择跟多少，根据自己骰子面，最少加1上不封顶;比如7个2，7个@，8个2等等。或者也可以选择加面不加数，比如6个图，6个。2、如果选择“开”:大家把自己的骰子都打开，确定一下场上有多少个3，如果没有6个3，甲喝，有则乙喝。(注:“跟”则是乙玩家相信上家甲说的没问题，场上可能存在那么多个骰子数。“开”则是不相信上家甲，认为他在吹牛”，场上不存在那么多的骰子数)
+                    </view>
+                    <view class="h3">
+                        拓展知识：
+                    </view>
+                    <view class="p">
+                        1、摇好的骰子只看一遍，自己要记得自己的散子2、通常前三把是输给对方的，目的是看他喊骰子的规律(是说实话还是假话，什么时候说)3、自己喊骰子要注意不要被人找到你喊骰子的规律。4、喊骰子不要犹豫，哪怕你没有，从你理直气壮的口气上也让人相信你有。
+                        5、别人喊的数字次数多，喊的也越来越高的时候跟他一个(他喊2个5后来喊3个6不管你喊什么他都再加喊5那就跟他一个，前提条件是你有)游戏规则根据城市地区不同略有差异，可根据当地的游戏规则进行调整，图个开心嘛，开心就好 !
+                    </view>
+                    <view class="p">
+                        附图 :
+                    </view>
+                    <image class="diceInfoImg" src="../../static/images/diceInfo.png" mode="" />
+                </view>
+                <view class="game2">
+                    <view class="h2">
+                        玩法2：789
+                    </view>
+                    <view class="h3">
+                        游戏道具:骰盅、骰子2粒
+                    </view>
+                    <view class="h3">
+                        基本规则 :
+                    </view>
+                    <view class="h4">
+                        1、先摆上三个杯子作为公共杯
+                    </view>
+                    <view class="p">
+                        (注:杯子数等于每次惩罚喝酒的上限)
+                    </view>
+                    <view class="h4">
+                        2、先倒半杯底酒作为起始点。
+                    </view>
+                    <view class="h4">
+                        3、大家轮流摇骰子，摇出7点的倒酒，摇出8点的喝杯中酒的一半，摇出9点的把杯中酒全部喝完;摇出其他点数没事，轮到下一家
+                        然后继续倒酒作为起始，周而复始。
+                    </view>
+                    <view class="p">
+                        注意事项 :</view>
+                    <view class="p">
+
+                        (1)、掷出7，8，9的人还要再掷，直到不是7，8，9为止，轮下一个人;
+                        (2)、掷出两个点数相同的时候，轮换顺序颠倒，如原来顺时针，则变为逆时针;
+                        例如，原来掷骰子顺序为A->B->C，B掷出两个四点，则顺序变为B->A->C 其中如果有人掷出2个1点，他可以指定任意一人喝完所有杯中酒，然后还是从这个人开始继续游戏 ;
+                        (3)、由于喝酒速度比较快，一般量力而行的会限定倒酒上
+                        限，比如2个杯子(4)、起始酒量随意，可以一点，也可以满杯，但是玩多了就会知道:害人终会害已，往往倒满杯的那人自己会解决掉。。。。。
+                    </view>
+                </view>
+                <view class="game3">
+                    <view class="h2">
+                        玩法三:喜相逢
+                    </view>
+                    <view class="h3">
+                        基本规则:
+                    </view>
+                    <view class="h4">
+                        一、适合4-6个人玩。
+                    </view>
+                    <view class="h4">
+                        每个人摇三个骰子，摇完一次后同时打三、
+                        开，进行比较大小。
+                    </view>
+                    <view class="p">
+                        大小规则:豹子 (111、666) >顺子 (123、456) >对子(11X、55X) >单数 (6最大、1最小)
+                    </view>
+                    <view class="h4">
+                        三、这个时候最小的一个人可以选择挑战其他人里面最小的。如果选择不挑战则罚酒半
+                        杯。如果选择挑战则单独重摇一次。</view>
+                    <view class="p">
+                        (注: 每次有人重摇都要加酒半杯，且每人只能有一次挑战机会)。如果重摇后依然是最小的则必须喝酒 (此时喝一杯)，如果重摇后比其他人大则轮到此时场上最小的继续选择。除此之外这个游戏过程中如果出现有两人或以上的骰子完全相同则称为喜相逢，此时相同的人无论大小都要重摇 (不算挑战次数)且加酒半杯。一局下来如果人人都敢挑战基本上最后输的人都能喝到2杯~
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
     <!--设置弹窗 -->
     <view class="modals modals-bottom-dialog" hidden="{{hideSetiingModal}}">
         <view class="modals-cancel" bindtap="hideSetiingModal"> </view>
@@ -152,14 +263,42 @@
             <view class="item dice">
                 骰子数量：
                 <view class="iconsBox">
-                    <image bindtap="minusDiceCount"  class="icons" src="../../static/images/minus.svg" mode=""/>
+                    <image bindtap="minusDiceCount" class="icons" src="../../static/images/minus.svg" mode="" />
                     <view class="diceCount">
                         {{diceCount}}
                     </view>
-                    <image bindtap="addDiceCount" class="icons" src="../../static/images/add.svg" mode=""/>
+                    <image bindtap="addDiceCount" class="icons" src="../../static/images/add.svg" mode="" />
                 </view>
 
             </view>
+        </view>
+    </view>
+    <view class="explainModal" wx:if="{{explainModal}}">
+        <view hidden="{{step1}}">
+            <button class="nextBtn" size="mini" type="primary" bindtap="next"> 下一步</button>
+            <view class="box welcome">
+                欢迎来到<text>uli的小游戏</text>，接下来将为您指引玩法步骤哟
+            </view>
+            <view class="box playGame">1.游戏开始有两种方法，第一种是点击开始，将触发摇晃骰盅，随之生成随机的骰子；第二种方法是摇晃手机也可以触发。现在请摇晃手机试试叭~</view>
+            <view class="box open">
+                骰盅摇晃结束后即可点击此按钮开盅，或者手动往上滑动盅盖也可查看摇盅结果，建议点击<text>开</text>按钮查看结果，因为可以将结果保存在手机中，方便查看摇盅历史哦~
+                点击开盅后，会在下方表格展示摇盅结果，请注意，结果并计算赖子的情况，也就是人们常说的<text>斋</text>
+            </view>
+        </view>
+        <view hidden="{{step2}}">
+            <view class="box history">
+                点击这里可以查看摇盅记录，放心，所有的数据都记录在本地，不会上传。
+            </view>
+            <view class="box explainBox">
+                点击这里即可查看摇骰子玩法哟，小白也能看懂~
+            </view>
+            <view class="box share">
+                点击这里可以分享给好友，一起玩哟
+            </view>
+            <view class="box setting">
+                点击这里可以设置游戏声音开关、震动开关、骰子数量、是否摇一摇手机触发游戏~
+            </view>
+            <button class="nextBtn step2" size="mini" type="primary" bindtap="bindExplainEndFn"> 完成</button>
         </view>
     </view>
 </view>

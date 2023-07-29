@@ -28,7 +28,11 @@ Page({
         animationSetting: {},
         isMusic: undefined,
         shakeState: false,
-        shakeStatus: undefined
+        shakeStatus: undefined,
+        step1: false,
+        step2: true,
+        explainModal: false,
+        hideExplainModal:true
     },
     onLoad() {
         if (wx.onGyroscopeChange) {
@@ -40,9 +44,15 @@ Page({
                 content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
             })
         }
-
+        
     },
     onShow() {
+        let explainModal = wx.getStorageSync('explainModal')
+        if(!explainModal ){    
+            this.setData({
+                explainModal:true
+            })
+        }
         let history = wx.getStorageSync('historyDiceList')
         if (history) {
             let H = JSON.parse(history)
@@ -410,12 +420,55 @@ Page({
         this.setData({
             shakeStatus: !this.data.shakeStatus
         })
-        if(this.data.shakeStatus){
+        if (this.data.shakeStatus) {
             this.watchOnGyroscopeChange()
-        }else{
+        } else {
             this.stop()
         }
         wx.setStorageSync('shakeStatus', this.data.shakeStatus)
+    },
+    //玩法说明相关
+    showExplainModal(){
+        this.setData({
+            hideExplainModal: false
+        })
+        setTimeout(() => {
+            this.fadeIn()
+        }, 200)
+    },
+    hideExplainModal(){
+        this.fadeDown(); //调用隐藏动画 
+        setTimeout(() => {
+            this.setData({
+                hideExplainModal: true
+            })
+        }, 200) //先执行下滑动画，再隐藏模块
+    },
+    next() {
+        if (!this.data.step1) {
+            this.setData({
+                step1: true,
+                step2: false
+            })
+        }
+    },
+    bindExplainEndFn() {
+        if (!this.data.step2) {
+            this.setData({
+                step2: true
+            })
+            wx.showToast({
+                title: '恭喜您阅读完游戏说明，请您开始游戏叭~',
+                icon:'none',
+                duration:3000
+            })
+            setTimeout(() => {
+                this.setData({
+                    explainModal: false
+                })
+                wx.setStorageSync('explainModal', '已阅读完毕')
+            }, 300)
+        }
     },
     /**
      * 用户点击右上角分享

@@ -403,3 +403,117 @@
     width: 30rpx;
     height: 30rpx;
 }
+/* 游戏说明遮罩层 */
+.explainModal {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+.explainModal .box {
+    padding: 10rpx;
+    border-radius: 10rpx;
+    color:#fefefe ;
+    font-size: 26rpx;
+    position: absolute;
+    background-color: #8db3da;
+    border:2rpx solid #4582c0 ;
+    width: 320rpx;
+}
+.explainModal .nextBtn {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+.explainModal .welcome{
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100rpx;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+.explainModal .welcome text {
+    color: #d11313;
+}
+.explainModal .playGame {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 37% 76%, 18% 98%, 17% 75%, 0% 75%);
+    top: 40%;
+    left: 10%;
+    height: 290rpx;
+}
+.explainModal .open {
+    clip-path: polygon(55% 19%, 100% 19%, 100% 100%, 0 100%, 0 19%, 36% 19%, 37% 0);
+    /* top: 43%; */
+    bottom: 1%;
+    left: 30%;
+    height: 250rpx;
+    width: 460rpx;
+    padding-top: 100rpx;
+} 
+.explainModal .open text {
+    color: #d11313;
+}
+.explainModal .history {
+    clip-path: polygon(71% 19%, 100% 19%, 100% 100%, 0 100%, 0 19%, 45% 19%, 70% 0);
+    height: 180rpx;
+    width: 200rpx;
+    padding-top: 60rpx;
+    top: 11%;
+    left: 5%;
+}
+.explainModal .explainBox {
+    clip-path: polygon(57% 18%, 100% 19%, 100% 100%, 0 100%, 0 19%, 38% 19%, 48% 0);
+    height: 140rpx;
+    width: 200rpx;
+    padding-top: 40rpx;
+    top: 11%;
+    left: 35%;
+}
+.explainModal .share {
+    clip-path: polygon(46% 19%, 100% 19%, 100% 100%, 0 100%, 0 19%, 27% 19%, 27% 0);
+    height: 100rpx;
+    width: 200rpx;
+    padding-top: 40rpx;
+    top: 11%;
+    right: 5%;
+}
+.explainModal .setting {
+    height: 190rpx;
+    width: 300rpx;
+    top: 47%;
+    right: 5%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+.explainModal  .step2 {
+    top: 50%;
+    left: 25%;
+}
+.bottom-dialog-body .h2 {
+    font-weight: 700;
+    font-size: 40rpx;
+    text-align: center;
+    margin: 20rpx 0;
+}
+.bottom-dialog-body .h3 {
+    font-weight: 600;
+    font-size: 34rpx;
+    margin: 20rpx 0;
+}
+.bottom-dialog-body .h4 {
+    font-weight: 500;
+    font-size: 30rpx;
+    margin: 20rpx 0;
+}
+.bottom-dialog-body .p {
+    font-weight: 400;
+    font-size: 28rpx;
+    margin: 20rpx 0;
+    color: #6f6f6f;
+}
+.bottom-dialog-body .diceInfoImg {
+    height: 1000rpx;
+}
