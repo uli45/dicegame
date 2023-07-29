@@ -1,0 +1,405 @@
+/**index.wxss**/
+.dice-container {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 10% 20%, rgb(239, 246, 249) 0%, rgb(206, 239, 253) 90%);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.topBar {
+    padding-top: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 24rpx;
+}
+
+.topBar>button {
+    background-color: rgba(0, 0, 0, 0);
+    width: 120rpx !important;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    font-size: 24rpx;
+    font-weight: normal;
+}
+
+.history {
+    width: 120rpx;
+    text-align: center;
+
+    /* background-color: pink; */
+}
+
+.topBarImg {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.center {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%
+}
+
+.diceBox {
+    background-color: #4582c0;
+    width: 500rpx;
+    height: 300rpx;
+    /* margin: 40% auto 0; */
+    border-radius: 50%;
+    border: 20rpx solid #4b9ae9;
+    position: relative;
+}
+
+.diceBox::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 520rpx;
+    height: 320rpx;
+    border: 6rpx solid #5ca8f3;
+    border-radius: 50%;
+    margin-left: -20rpx;
+    margin-top: -20rpx;
+}
+
+.diceBox::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 540rpx;
+    height: 340rpx;
+    /* border: 1rpx solid rgb(143, 143, 143); */
+    border-radius: 50%;
+    /* margin-left: -23rpx; */
+    /* margin-top: -23rpx; */
+    top: 0rpx;
+}
+
+.diceCap {
+    position: absolute;
+    top: -122rpx;
+    left: -4rpx;
+    width: 500rpx;
+    height: 540rpx;
+    border: solid 1rpx #5ca8f3;
+    background: #5ca8f3;
+    border-radius: 50%;
+    z-index: 10;
+    /* display: none; */
+}
+
+.diceCap::after {
+    content: '';
+    display: inline-block;
+    width: 500rpx;
+    height: 800rpx;
+    position: relative;
+    background: #5ca8f3;
+    top: 50%;
+    left: 0rpx;
+    opacity: 1;
+    border-left: #5ca8f3 1rpx solid;
+    border-right: #5ca8f3 1rpx solid;
+    border-bottom: #5ca8f3 1rpx solid;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    overflow: hidden;
+}
+
+.diceImg {
+    /* background-color: pink; */
+    width: 360rpx;
+    height: 260rpx;
+    margin: 5% auto;
+    position: relative;
+}
+
+.diceItem {
+    position: absolute;
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+
+.diceImg .diceImgItem {
+    width: 100%;
+    height: 100%;
+
+}
+
+.playBoxAbsolute {
+    position: absolute;
+    transform: translateY(-10%);
+    top: 65%;
+    left: 10%;
+    right: 10%;
+    /* background-color: #fff; */
+    /* width: 400rpx; */
+    height: 200rpx;
+}
+
+.playBox {
+    margin-top: 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24rpx;
+    position: absolute;
+    width: 100%;
+    /* background-color: pink; */
+}
+
+.totalDice {
+    position: absolute;
+    bottom: 20rpx;
+    left: 50%;
+    transform: translate(-50%);
+    border: 2rpx solid #4582c0;
+    border-radius: 20rpx;
+    width: 80vw;
+    height: 270rpx;
+    margin: 20rpx auto 0;
+    padding: 10rpx;
+    opacity: 0;
+}
+
+.totaldicebox {
+    margin-top: 20rpx;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}
+
+.totaldiceItem {
+    width: 33.33%;
+    margin-bottom: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diceItemImg {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+
+.totaldiceItem text {
+    margin-left: 5rpx;
+    text-align: center;
+}
+
+.total {
+    text-align: center;
+}
+
+.total>text {
+    margin-left: 5rpx;
+    color: #f35626;
+    font-weight: 700;
+    font-size: 36rpx;
+
+}
+
+.tip {
+    font-size: 16rpx;
+    text-align: right;
+    color: #565f63;
+
+}
+
+.tip>text {
+    color: red;
+    font-size: 24rpx;
+}
+
+/* 历史记录弹窗 */
+/*模态框*/
+.modals {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modals-cancel {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.bottom-dialog-body {
+    position: absolute;
+    z-index: 10001;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30rpx;
+    height: 85vh;
+    background-color: #d8effa;
+    border-radius: 30rpx 30rpx 0 0;
+    overflow: hidden;
+    padding-bottom: 100rpx;
+}
+
+/*动画前初始位置*/
+.bottom-pos {
+    transform: translateY(100%);
+}
+
+.btn-cancel {
+    position: absolute;
+    right: 20rpx;
+    top: 10rpx;
+    display: block;
+    width: 60rpx;
+    height: 60rpx;
+    /* background-color: pink; */
+    text-align: center;
+    font-weight: 700;
+    font-size: 36rpx;
+    color: rgba(0, 0, 0, .7);
+}
+
+.bottom-dialog-body .title {
+    margin-top: 20rpx;
+    text-align: center;
+    font-weight: 600;
+    font-size: 36rpx;
+}
+
+.historyTitle {
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #88a8bd;
+    border-radius: 10rpx;
+}
+
+.historyTitle>.left {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20rpx 0 40rpx;
+    margin-right: 20rpx;
+    border-right: 1px solid #91b2c5;
+
+}
+
+.historyTitle>.left>.gang {
+    width: 1rpx;
+    height: 100%;
+    background-color: #91b2c5;
+}
+
+.row {
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #88a8bd;
+    border-radius: 10rpx;
+    border-top: none;
+}
+
+.row>.col {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 20rpx 0 40rpx;
+    margin-right: 20rpx;
+    border-right: 1px solid #91b2c5;
+}
+
+.row>.col>.time {
+    line-height: 1;
+    font-size: 26rpx;
+    margin-left: -10rpx;
+    width: 200rpx;
+    margin-left: -30rpx;
+}
+
+.row>.col>.gang {
+    width: 1rpx;
+    height: 100%;
+    background-color: #91b2c5;
+    padding: 0;
+    margin: 0;
+}
+.row>.col>.total {
+    font-size: 26rpx;
+    font-weight: normal;
+    width: 130rpx;
+}
+.row .imgBox {
+    flex: 1; 
+}
+
+.row>.imgBox>image {
+    width: 40rpx;
+    height: 40rpx;
+}
+.settingModals {
+    position: absolute;
+    z-index: 10001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400rpx;
+    height: 500rpx;
+    background-color: #d8effa;
+    border-radius: 20rpx;
+    border: 4rpx solid #197e5c;
+    padding: 20rpx;
+    color: #523b31;
+    text-align: center;
+}
+.settingModals>.btn-cancel {
+    width: 40rpx;
+    height: 40rpx;
+}
+.settingModals > .title {
+    text-align: center;
+    margin-top: 30rpx;
+}
+.settingModals>.item {
+    border-radius: 20rpx;
+    background-color: #99dafa;
+    border: 4rpx solid #197e5c; 
+    margin: 20rpx 0;
+    padding: 5rpx;
+}
+.settingModals .dice {
+    display: flex;
+    /* background-color: #fff; */
+    align-items: center;
+    justify-content: space-around;
+}
+.settingModals .dice .iconsBox {
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+}
+.settingModals .dice .iconsBox .diceCount {
+    margin: 0 40rpx;
+}
+.settingModals .dice .iconsBox .icons {
+    width: 30rpx;
+    height: 30rpx;
+}

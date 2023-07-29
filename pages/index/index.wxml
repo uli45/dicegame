@@ -1,0 +1,165 @@
+<view class="dice-container">
+    <view class="topBar">
+        <button>
+            <view class="history" bindtap="showModal">
+                <image class="topBarImg" src="../../static/images/history.svg" mode="" />
+                <view>
+                    历史记录
+                </view>
+            </view>
+        </button>
+        <button open-type="share">
+            <view class="history" bindtap="bidtapShare">
+                <image class="topBarImg" src="../../static/images/share.svg" mode="" />
+                <view>
+                    邀请好友
+                </view>
+            </view>
+        </button>
+
+    </view>
+    <view class="center">
+        <view class="diceBox" bindtouchmove="bindtouchmoveFn" bindtouchstart='bindtouchstartFn' bindtouchend='bindtouchendFn'>
+            <view class="diceCap" style="{{diceCapStyle}}">
+            </view>
+            <view class="diceImg">
+                <view class="diceItem" wx:for="{{diceList}}" wx:key="diceStyle" style="{{item.diceStyle}}">
+                    <image class="diceImgItem" src="{{item.diceImg}}" mode="" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="playBoxAbsolute">
+        <view class="playBox">
+            <view style="width: 120rpx;">
+                <view class="history" bindtap='bindtapStartFn' hidden="{{start}}">
+                    <image class="topBarImg" src="../../static/images/yao.svg" mode="" />
+                    <view>
+                        开始
+                    </view>
+                </view>
+            </view>
+            <view style="width: 120rpx;">
+                <view class="history" bindtap='bindtapOpen' hidden="{{start}}">
+                    <image class="topBarImg" src="../../static/images/open.svg" mode="" />
+                    <view>
+                        开
+                    </view>
+                </view>
+            </view>
+
+            <view class="history" bindtap='bindtapSetting'>
+                <image class="topBarImg" src="../../static/images/setting.svg" mode="" />
+                <view>
+                    设置
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="totalDice" style="{{totalDiceOpacity}}">
+        <view class="total">
+            总点数
+            <text>{{total}}</text>
+            <view class="tip">
+                <text>!</text> 不计算赖子可变情况哦
+            </view>
+        </view>
+        <view class="totaldicebox">
+            <view class="totaldiceItem">
+                <image class="diceItemImg" src="../../static/images/01.png" mode="" />
+                <text>X {{one}}</text>
+            </view>
+            <view class="totaldiceItem">
+                <image class="diceItemImg" src="../../static/images/03.png" mode="" />
+                <text>X {{thr}}</text>
+            </view>
+            <view class="totaldiceItem">
+                <image class="diceItemImg" src="../../static/images/05.png" mode="" />
+                <text>X {{fiv}}</text>
+            </view>
+            <view class="totaldiceItem">
+                <image class="diceItemImg" src="../../static/images/02.png" mode="" />
+                <text>X {{two}}</text>
+            </view>
+            <view class="totaldiceItem">
+                <image class="diceItemImg" src="../../static/images/04.png" mode="" />
+                <text>X {{fou}}</text>
+            </view>
+            <view class="totaldiceItem">
+                <image class="diceItemImg" src="../../static/images/06.png" mode="" />
+                <text>X {{six}}</text>
+            </view>
+        </view>
+    </view>
+    <!-- 打开历史记录 -->
+    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+        <view class="modals-cancel" bindtap="hideModal"></view>
+        <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+            <image src="../../static/images/close.svg" bindtap="hideModal" class="btn-cancel" mode="" />
+            <view class="title">历史开骰记录</view>
+            <view class="historytableScroll">
+                <view class="historyTitle">
+                    <view class="left">
+                        <view style="width: 134rpx;">
+                            时间
+                        </view>
+                        <view class="gang">
+                        </view>
+                        <view>
+                            总点数
+                        </view>
+                    </view>
+                    <view style="flex:1">
+                        开骰记录
+                    </view>
+                </view>
+                <scroll-view scroll-y="true" style="height: 80vh;">
+                    <view class="row" wx:for="{{historyDiceList}}" wx:key="id">
+                        <view class="col">
+                            <view class="time"> {{item.id}}</view>
+                            <view class="gang"></view>
+                            <view class="total"> 共 <text>{{item.total}}</text> 点</view>
+                        </view>
+                        <view class="imgBox">
+                            <image wx:for="{{item.one}}" src="../../static/images/01.png" mode="" />
+                            <image wx:for="{{item.two}}" src="../../static/images/02.png" mode="" />
+                            <image wx:for="{{item.thr}}" src="../../static/images/03.png" mode="" />
+                            <image wx:for="{{item.fou}}" src="../../static/images/04.png" mode="" />
+                            <image wx:for="{{item.fiv}}" src="../../static/images/05.png" mode="" />
+                            <image wx:for="{{item.six}}" src="../../static/images/06.png" mode="" />
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+    <!--设置弹窗 -->
+    <view class="modals modals-bottom-dialog" hidden="{{hideSetiingModal}}">
+        <view class="modals-cancel" bindtap="hideSetiingModal"> </view>
+        <view class="settingModals" animation="{{animationSetting}}">
+            <image src="../../static/images/close.svg" bindtap="hideSetiingModal" class="btn-cancel" mode="" />
+            <view class="title">设置</view>
+            <view class="item" bindtap="bindVibrateLong">
+                震动：<text>{{vibrateLong?'已开启':'已关闭'}}</text>
+            </view>
+            <view class="item" bindtap="bindmusic">
+                音乐：<text>{{isMusic?'已开启':'已关闭'}}</text>
+            </view>
+            <view class="item" bindtap="bindShakeFn">
+                摇一摇开始游戏？：<text>{{shakeStatus?'是':'否'}}</text>
+            </view>
+            <view class="item dice">
+                骰子数量：
+                <view class="iconsBox">
+                    <image bindtap="minusDiceCount"  class="icons" src="../../static/images/minus.svg" mode=""/>
+                    <view class="diceCount">
+                        {{diceCount}}
+                    </view>
+                    <image bindtap="addDiceCount" class="icons" src="../../static/images/add.svg" mode=""/>
+                </view>
+
+            </view>
+        </view>
+    </view>
+</view>
